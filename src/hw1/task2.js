@@ -1,6 +1,6 @@
-const fs = require('node:fs');
-const csvtojson = require('csvtojson');
-const { pipeline } = require('node:stream');
+import * as fs from 'node:fs';
+import csvtojson from 'csvtojson';
+import  { pipeline } from 'node:stream';
 
 const readStream = fs.createReadStream('./assets/nodejs-hw1-ex1.csv');
 const writeStream = fs.createWriteStream('./gen/output1.txt');
