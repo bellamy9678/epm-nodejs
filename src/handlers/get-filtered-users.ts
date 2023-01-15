@@ -6,7 +6,7 @@ export const getFilteredUsers = (req: Request, res: Response) => {
         const { pattern = '', limit = '' } = req.query;
 
         if (isNaN(+limit) || +limit <= 0) {
-            res.status(400).send({ status: 400, error: 'Limit should be an valid number' });
+            return res.status(400).send({ status: 400, error: 'Limit should be an valid number' });
         }
 
         const users = [...store.values()]
@@ -14,9 +14,9 @@ export const getFilteredUsers = (req: Request, res: Response) => {
             .slice(0, +limit)
             .sort((user1, user2) => user1.login.localeCompare(user2.login));
 
-        res.status(200).send({ users });
+        return res.status(200).send({ users });
     } catch (error: any) {
         console.log(error);
-        res.status(500).send({ status: 500, error: 'Something went wrong' });
+        return res.status(500).send({ status: 500, error: 'Something went wrong' });
     }
 };

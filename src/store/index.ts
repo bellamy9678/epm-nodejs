@@ -5,7 +5,7 @@ export const store = new Map();
 const mockUser: User = {
     id: '1234',
     login: 'mockLogin',
-    password: 'mockPassword',
+    password: 'mockPassword1',
     isDeleted: false,
     age: 25
 };
