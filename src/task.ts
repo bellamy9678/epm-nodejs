@@ -8,9 +8,9 @@ const PORT = 3000;
 
 app.use(express.json());
 
-app.get('/:userId', getUser);
-app.put('/:userId?', updateUser);
-app.delete('/', deleteUser);
+app.get('/user/:userId?', getUser);
+app.put('/user', updateUser);
+app.delete('/user', deleteUser);
 
 app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}`);

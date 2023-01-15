@@ -1,25 +1,26 @@
 import { Request, Response } from 'express';
 import { store } from '../store';
 import { v4 as uuid } from 'uuid';
-import { UserData } from '../types';
+import { User } from '../types';
 
 export const updateUser = (req: Request, res: Response) => {
     try {
-        const { userId = uuid() } = req.params;
-        const user: UserData = req.body;
+        const user: User = req.body;
+        const { id = uuid() } = user;
 
-        console.log(`${store.has(userId) ? 'Updating' : 'Generating'} user for id ${userId}`);
-        
-        store.set(userId, user);
+        console.log(`${store.has(id) ? 'Updating' : 'Generating'} user for id ${id}`);
 
-        const newUser = store.get(userId);
+        store.set(id, user);
+
+        const newUser = store.get(id);
+
         if (!newUser) {
-            throw new Error(`Can not create/update user`)
+            res.status(404).send({ status: 404, error: `No user found for id ${id}` });
         }
 
-        res.status(200).send({ user: { ...newUser, id: userId } });
+        res.status(200).send({ user: { ...newUser, id } });
     } catch (error: any) {
         console.log(error);
-        res.status(500).send({ status: 500, error: error?.message });
+        res.status(500).send({ status: 500, error: 'Something went wrong' });
     }
 }

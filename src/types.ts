@@ -1,5 +1,5 @@
 export type User = {
-    id: string;
+    id?: string;
     login: string;
     password: string;
     isDeleted: boolean;
