@@ -16,7 +16,7 @@ export const getUser = (req: Request, res: Response) => {
             res.status(404).send({ status: 404, error: `No user found for id ${userId}` });
         }
 
-        res.status(200).send({ user: { ...user, id: userId } });
+        res.status(200).send({ user });
     } catch (error: any) {
         console.log(error);
         res.status(500).send({ status: 500, error: 'Something went wrong' });

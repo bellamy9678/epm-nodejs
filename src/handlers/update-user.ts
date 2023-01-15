@@ -10,7 +10,7 @@ export const updateUser = (req: Request, res: Response) => {
 
         console.log(`${store.has(id) ? 'Updating' : 'Generating'} user for id ${id}`);
 
-        store.set(id, user);
+        store.set(id, { ...user, id });
 
         const newUser = store.get(id);
 
