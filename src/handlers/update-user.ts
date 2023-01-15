@@ -23,4 +23,4 @@ export const updateUser = (req: Request, res: Response) => {
         console.log(error);
         res.status(500).send({ status: 500, error: 'Something went wrong' });
     }
-}
+};

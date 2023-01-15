@@ -1,4 +1,4 @@
-import { User } from "../types";
+import { User } from '../types';
 
 export const store = new Map();
 
@@ -7,7 +7,7 @@ const mockUser: User = {
     login: 'mockLogin',
     password: 'mockPassword',
     isDeleted: false,
-    age: 25,
+    age: 25
 };
 
 store.set('1234', mockUser);

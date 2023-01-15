@@ -10,7 +10,7 @@ app.use(express.json());
 
 app.get('/user/:userId?', getUser);
 app.put('/user', updateUser);
-app.delete('/user', deleteUser);
+app.delete('/user/:userId?', deleteUser);
 
 app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}`);
