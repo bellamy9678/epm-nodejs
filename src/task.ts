@@ -6,8 +6,10 @@ import { deleteUser } from './handlers/delete-user';
 const app = express();
 const PORT = 3000;
 
+app.use(express.json());
+
 app.get('/:userId', getUser);
-app.put('/', updateUser);
+app.put('/:userId?', updateUser);
 app.delete('/', deleteUser);
 
 app.listen(PORT, () => {

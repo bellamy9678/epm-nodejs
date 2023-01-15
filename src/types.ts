@@ -5,3 +5,5 @@ export type User = {
     isDeleted: boolean;
     age: number;
 };
+
+export type UserData = Omit<User, 'id'>
